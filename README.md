@@ -1,11 +1,8 @@
 <div align="center">
-    <img src="https://cdn.discordapp.com/attachments/1098174922951495680/1098174923232510002/Bit_Space.png" width="100" alt="Logo"/><br/>
     <h1 align="center">Weather-Reporto.nvim</h1>
-  <img src="https://img.shields.io/github/downloads/t-aswath/Weather-Reporto.nvim/total.svg" width="200"/>
   <img src="https://img.shields.io/badge/Editor%20Config-E0EFEF?style=for-the-badge&logo=editorconfig&logoColor=000"/>
   <img src="https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white"/>
-  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black"/>
+<img src="https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white"/>
     <h3>Bring Weather Forecasts to Your Neovim Editor for Ultimate Productivity</h3>
 </div>
 
@@ -155,7 +152,5 @@ feline.setup({
 
 
 >Dashboard
-
-<img src="https://user-images.githubusercontent.com/119417646/233080586-38f36947-6666-4f9b-b2bc-9c2b563100c1.png" width=500/>
 
 <img src="https://user-images.githubusercontent.com/119417646/233082680-44fb5b11-5a36-4d7f-b720-19e92932c4fd.png" width=500/>
