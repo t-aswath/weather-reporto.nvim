@@ -31,7 +31,7 @@ function content.setup(opts)
 		end
 	end
 
-	content.feed = fetchdata(opts.latitude, opts.longitude)
+	content.feed = fetchdata.fetch(opts.latitude, opts.longitude)
 	local mg = function(x)
 		return string.format("%s", x)
 	end
@@ -48,10 +48,12 @@ function content.setup(opts)
 			.. ((opts.celsius and mg(arg.celtemp)) or mg(arg.temp))
 			.. ((opts.celsius and "°C ") or "°F ")
 			.. " "
-		content.kfeed = " " .. tostring(arg.temp + 241) .. "K "
-                        .. fweathercode[tonumber(arg.isday) + 2]
-                        .. " "
-                        .. fweathercode[1]
+		content.kfeed = " "
+			.. tostring(arg.temp + 241)
+			.. "K "
+			.. fweathercode[tonumber(arg.isday) + 2]
+			.. " "
+			.. fweathercode[1]
 	else
 		content.feed = {
 			celtemp = "#E3",

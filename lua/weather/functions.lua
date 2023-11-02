@@ -1,7 +1,7 @@
 -- Define a function to fetch information from a URL
 local function fetch(lat, lon)
 	--lat and lon are strings
-	local url = "\"https://weather-api-support.vercel.app/?long=" .. lon .. "&lat=" .. lat .. "\""
+	local url = '"https://weather-api-support.vercel.app/?long=' .. lon .. "&lat=" .. lat .. '"'
 
 	-- Use the system function to make a curl request to the URL
 	local handle = io.popen("curl -s " .. url)
@@ -11,9 +11,9 @@ local function fetch(lat, lon)
 	if response and response ~= "" then
 		-- Return the response body (HTML content)
 		-- Define a regex pattern to match HTML tags and extract their content
-		local p1 = '"temperature":(.-),"'
-		local p2 = '"weathercode":(.-),"'
-		local p3 = '"is_day":(.-),"'
+		local p1 = ',"temperature":([-]?[0-9.]*),'
+		local p2 = ',"weathercode":([0-9.]*)}'
+		local p3 = ',"is_day":([01]),"'
 
 		-- Create a table to store the extracted data
 		local parsed_data = {}
@@ -21,19 +21,19 @@ local function fetch(lat, lon)
 		for match in response:gmatch(p1) do
 			-- Add the extracted content to the parsed_data table
 			parsed_data.temp = match
-                        break
+			break
 		end
 
 		for match in response:gmatch(p2) do
 			-- Add the extracted content to the parsed_data table
 			parsed_data.condition = match
-                        break
+			break
 		end
 
 		for match in response:gmatch(p3) do
 			-- Add the extracted content to the parsed_data table
 			parsed_data.isday = match
-                        break
+			break
 		end
 		return parsed_data
 	else
@@ -42,4 +42,6 @@ local function fetch(lat, lon)
 	end
 end
 
-return fetch
+local module = {}
+module.fetch = fetch
+return module
