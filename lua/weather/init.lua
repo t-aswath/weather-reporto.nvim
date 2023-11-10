@@ -36,7 +36,16 @@ function content.setup(opts)
 		return string.format("%s", x)
 	end
 	local arg = content.feed
-	if arg.temp ~= nil and arg.temp ~= " " then
+	if tonumber(arg.temp) == nil then
+		content.feed = {
+			celtemp = "",
+			temp = "",
+		}
+		content.kfeed = ""
+		content.strfeed = ""
+		content.cond = ""
+		print("Err 500 : Internal Error")
+	elseif arg.temp ~= nil and arg.temp ~= " " then
 		local fweathercode = icons[tonumber(arg.condition)]
 		content.cond = fweathercode[1]
 		arg.celtemp = math.floor(tonumber(arg.temp))
@@ -56,12 +65,13 @@ function content.setup(opts)
 			.. fweathercode[1]
 	else
 		content.feed = {
-			celtemp = "#E3",
-			temp = "#E3",
+			celtemp = "󱍢",
+			temp = "󱍢",
 		}
-		content.kfeed = "#E3"
-		content.strfeed = "#E3"
-		content.cond = "#E3"
+		content.kfeed = "󱍢"
+		content.strfeed = "󱍢"
+		content.cond = "󱍢"
+		print("Err 404 : Failed to fetch info")
 	end
 end
 
