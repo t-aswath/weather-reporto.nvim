@@ -36,7 +36,27 @@ function content.setup(opts)
 		return string.format("%s", x)
 	end
 	local arg = content.feed
-	if arg.temp ~= nil and arg.temp ~= " " then
+	-- when there is no internet
+	if arg.errcode == 2 then
+		content.feed = {
+			celtemp = "󱍢",
+			temp = "󱍢",
+		}
+		content.kfeed = "󱍢"
+		content.strfeed = "󱍢"
+		content.cond = "󱍢"
+		print("Err 404 : Failed to fetch info")
+		-- when there is internal error
+	elseif arg.errcode == 3 then
+		content.feed = {
+			celtemp = "",
+			temp = "",
+		}
+		content.kfeed = ""
+		content.strfeed = ""
+		content.cond = ""
+		print("Err 500 : Internal Error")
+	else
 		local fweathercode = icons[tonumber(arg.condition)]
 		content.cond = fweathercode[1]
 		arg.celtemp = math.floor(tonumber(arg.temp))
@@ -54,14 +74,6 @@ function content.setup(opts)
 			.. fweathercode[tonumber(arg.isday) + 2]
 			.. " "
 			.. fweathercode[1]
-	else
-		content.feed = {
-			celtemp = "#E3",
-			temp = "#E3",
-		}
-		content.kfeed = "#E3"
-		content.strfeed = "#E3"
-		content.cond = "#E3"
 	end
 end
 
